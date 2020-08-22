@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<title>全局——预处理阶段</title>
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			html,body{
+				width:100%;
+				height:100%;
+			}
+			html{
+				font-size:20px;
+			}
+			main,section{
+				display:block;
+			}
+			main{
+				width:30rem;
+				height:auto;
+				padding:1rem;
+				margin:2rem auto 0;
+				box-shadow:0 0 0.5rem 0.5rem #666;
+				border-radius:1rem;
+				font-size:1rem;
+			}
+			h3{
+				width:100%;
+				height:2rem;
+				text-align:center;
+				line-height:2rem;
+				background-color:black;
+				color:white;
+				margin:0.5rem;
+				padding:0;
+			}
+			ul{
+				list-style-position:inside;
+				padding:1rem;
+			}
+			ul>li{
+				margin:0.5rem 0;
+			}
+		</style>
+		<style>
+			@meida (max-width:450px){
+				main{
+					width:auto;
+					height:auto;
+					padding:0;
+					margin:0;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h3>全局（预处理阶段）</h3>
+				<ul>
+					<li>1，会全局生成一个 LexicalEnviroment (JS 词法环境对象 )</li>
+					<li>2，将用 var 声明的变量和用声明方式创建的函数，加到 LexicalEnviroment (JS词法环境对象 ) 中。</li>
+					<li>3，在全局预处理阶段， LexicalEnviroment === window </li>
+				</ul>
+			</section>
+			<section>
+				<h3>（JS处理命名重复问题）</h3>
+				<ul>
+					<li>先扫描函数声明后扫描变量（var声明）</li>
+					<li>处理函数声明有冲突，会覆盖</li>
+					<li>处理变量声明有冲突，会忽略</li>
+				</ul>
+			</section>
+		</main>
+		<script>
+			/* 
+			 LexicalEnviroment{
+				 a: undefined,
+				 b: undefined,
+				 c: undefined,
+				 A: 函数 A 的引用
+			 }
+			 */
+			var a = 5;
+			console.log(a)//5
+			var b;
+			console.log(b)//undefined
+			console.log(c)//undefined
+			var c = 7;
+			console.log(d)//Uncaught ReferenceError: d is not defined
+			d = 9;
+			A();//AAA
+			B();//Uncaught TypeError: B is not a function
+			function A(){
+				console.log('AAA');
+			}
+			var B = function(){
+				console.log('BBB');
+			}
+			/*
+			 JS 处理命名重复问题
+			 LexicalEnviroment{
+				 f:函数的引用
+			 }
+			 */
+			alert(f)//function f(){console.log(f);}
+			var f = 5;
+			function f(){
+				console.log(f);
+			}
+			
+			alert(m)//function f(){console.log(f);}
+			function m(){
+				console.log(m);
+			}
+			var m = 5;
+		</script>
+	</body>
+</html>

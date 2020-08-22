@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<title>全局——执行阶段</title>
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			html,body{
+				width:100%;
+				height:100%;
+			}
+			html{
+				font-size:20px;
+			}
+			main,section{
+				display:block;
+			}
+			main{
+				width:30rem;
+				height:auto;
+				margin:2rem auto 0;
+				padding:1rem/;
+				box-shadow:0 0 0.5rem 0.5rem #666;
+				border-radius:1rem;
+				font-size:0.7rem;
+			}
+			h3{
+				width:100%;
+				height:2rem;
+				text-align:center;
+				line-height:2rem;
+				background-color:black;
+				color:white;
+				margin:0.5rem 0;
+			}
+			ul{
+				list-style-position:inside;
+				padding:1rem;
+			}
+			ul>li{
+				margin:0.5rem 0;
+			}
+		</style>
+		<style>
+			@media (max-width:450px){
+				main{
+					width:auto;
+					height:auto;
+					margin:0;
+					padding:0;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<section> 
+				<h3>全局——执行阶段</h3>
+				<ul>
+					<li>执行代码的过程中，会把值赋值进 LexicalEnviroment (JS 词法环境对象 )中。</li>
+				</ul>
+			</section>
+		</main>
+		<script>
+			/* 预处理阶段：
+			 LexicalEnviroment = window{
+				a: undefined,
+				f: 函数f的引用,
+				g: undefined
+			 }
+			 */
+			/* 执行阶段：
+			 LexicalEnviroment = window{
+				a: 5,
+				f: 函数f的引用,
+				g: 函数g的引用,
+				b: 6,
+			 }
+			 */
+			alert(a);// undefined
+			alert(b);// Uncaught ReferenceError: b is not defined
+			alert(f);// function f(){console.log('f');}
+			alert(g);// undefined
+			
+			var a = 5;
+			b = 6;
+			alert(b);// 6
+			function f(){
+				console.log('f');
+			}
+			var g = function(){// 函数表达式，相当于变量的赋值
+				console.log('g');
+			}
+			alert(g);// function(){console.log('g');}
+		</script>
+	</body>
+</html>
