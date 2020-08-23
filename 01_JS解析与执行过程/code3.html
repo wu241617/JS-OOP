@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<title>函数预处理阶段</title>
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			html,body{
+				width:100%;
+				height:100%;
+			}
+			html{
+				font-size:20px;
+			}
+			main,section{
+				display:block;
+			}
+			main{
+				width:30rem;
+				height:auto;
+				margin:2rem auto 0;
+				padding:1rem;
+				box-shadow:0 0 0.5rem 0.5rem #666;
+				border-radius:1rem;
+				font-size:0.7rem;
+			}
+			h3{
+				width:100%;
+				height:2rem;
+				margin:0.5rem;
+				padding:0;
+				text-align:center;
+				line-height:2rem;
+				background-color:black;
+				color:white;
+			}
+			ul{
+				list-style-position:inside;
+				padding:1rem;
+			}
+			ul>li{
+				margin:0.5rem 0;
+			}
+		</style>
+		<style>
+			@media (max-width:450px){
+				main{
+					width:auto;
+					height:auto;
+					padding:0;
+					margin:0;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h3>函数预处理阶段</h3>
+				<ul>
+					<li>每调用一次，会产生一个 LexicalEnvironment (JS 词法环境对象) </li>
+					<li>先函数的参数</li>
+					<li>内部声明式函数</li>
+					<li>内部 var 变量</li>
+					<li>冲突情况与全局处理一样</li>
+				</ul>
+			</section>
+		</main>
+		<script>
+			/* 函数引用阶段
+			 LexicalEnvironment {
+				 a: 指向函数 a 的引用,
+				 b: 2,
+				 f: 指向函数 f 的引用,
+			 }
+			 */
+			/*函数执行阶段
+			 LexicalEnvironment {
+				 a: 指向函数 a 的引用,
+				 b: 100,
+				 f: 指向函数 f 的引用
+			 }
+			 */
+			function f(a, b){
+				alert(a);// function a(){}
+				alert(b);// 2
+				var b = 100;
+				function a(){}
+			}
+			f(1, 2);
+		</script>
+	</body>
+</html>
