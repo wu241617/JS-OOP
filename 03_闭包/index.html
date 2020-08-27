@@ -30,8 +30,70 @@
 				font-family:微软雅黑;
 				font-weight:bold;
 			}
+			h3{
+				width:100%;
+				height:2rem;
+				text-align:center;
+				line-height:2rem;
+				background-color:black;
+				color:white;
+				margin:0.5rem 0;
+				padding:0;
+			}
+			ul{
+				list-style-position:inside;
+				padding:1rem;
+			}
+			ul>li{
+				margin:0.5rem 0;
+			}
+		</style>
+		<style>
+			@media (max-width:450px){
+				main{
+					width:auto;
+					height:auto;
+					padding:0;
+					margin:0;
+				}
+			}
 		</style>
 	</head>
 	<body>
+		<main>
+			<section>
+				<h3>JS闭包</h3>
+				<ul>
+					<li>维基百科中，闭包被解释为：在计算机科学中，闭包是词法闭包的简称，是引用了自由变量的函数。这个被引用的自由变量将和这个函数一同存在，即使已经离开了创建它的环境也不例外，所有有另一种说法，也认为闭包是由函数和与其相关的引用环境组合而成的实体。</li>
+					<li>闭包好处：减少全局变量。减少传递给函数的参数数量。封装。</li>
+					<li>使用闭包注意点：对捕获的变量只是个引用，不是复制。父函数每调用一次会产生不同的闭包，循环中问题。</li>
+				</ul>
+			</section>
+		</main>
+		
+		<script type="text/javascript">
+			(function(){
+				function f1(){
+					var str = 'wuhao';
+					return f2 = function(){
+						console.log(str);// wuhao
+					}
+				}
+				var result = f1();
+				result();
+				
+				function b(){
+					var num = 0;
+					return function(){
+						num++;
+						console.log('num = '+num);
+					}
+				}
+				var result1 = b();
+				result1();
+				result1();
+				result1();
+			})()
+		</script>
 	</body>
 </html>

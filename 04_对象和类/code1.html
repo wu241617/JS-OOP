@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<title>JS对象的创建和访问</title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			/* 字面量创建对象 */
+			var student = {
+				// 属性
+				'name': 'wuhao',
+				'age': 22,
+				// 方法
+				'toString': function(){
+					console.log('姓名：'+this.name+' 年龄: '+this.age);
+				},
+				// get 和 set 方法
+				getName: function(){
+					return this.name;
+				},
+				setName: function(val){
+					this.name = val;
+				},
+				// 内部子对象
+				self: {
+					'name': 'my',
+					'age': 18
+				}
+			}
+			console.log(student.getName())
+			console.log(student['age'])
+			student.setName('wangwenyan')
+			console.log(student.name)
+			student.toString()
+			console.log(student['self']['name'])
+			console.log(student.self.age)
+			
+			/* Object创建对象 */
+			var o = new Object();// 内部已存在 toString 等内部方法
+			/* 使用 Object.defineProperty() 定义与修改单个属性 */
+			Object.defineProperty(o,'name',{value:'张三',writable:false})
+			console.log(o.name)
+			/* 使用 Object.ddefineProperties() 定义与修改多个属性 */
+			Object.defineProperties(o,{
+				salary:{
+					// get,set,writable,enuerable,comfigurable,value
+					value:1000,
+					writable:false
+				},
+				gender:{
+					value:true
+				},
+				height:{
+					get:function(){
+						return 180
+					},
+					set:function(val){
+						console.log(val)
+					}
+				}
+			})
+			console.log(o['salary'])
+			console.log(o['gender'])
+			o.age = 19
+			o['stuno'] = '1704240131'
+			console.log(o.age)
+			console.log(o.stuno)
+			console.log(o.height)
+			o.height=234
+		</script>
+	</body>
+</html>

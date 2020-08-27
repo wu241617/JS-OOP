@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<title>原型</title>
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			html,body{
+				width:100%;
+				height:100%;
+			}
+			html{
+				font-size:20px;
+			}
+			main,section{
+				display:block;
+			}
+			main{
+				width:30rem;
+				height:auto;
+				margin:2rem auto 0;
+				padding:0;
+				box-shadow:0 0 0.5rem 0.5rem #666;
+				border-radius:1rem;
+				font-size:0.7rem;
+				font-family:微软雅黑;
+			}
+			h3{
+				width:100%;
+				height:2rem;
+				text-align:center;
+				line-height:2rem;
+				background-color:black;
+				color:white;
+				margin:0.5rem 0;
+			}
+			ul{
+				list-style-position:inside;
+				padding:1rem;
+			}
+			ul>li{
+				margin:0.5rem;
+			}
+		</style>
+		<style>
+			@media (max-width:450px){
+				main{
+					width:auto;
+					height:auto;
+					padding:0;
+					margin:0;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h3>JS原型</h3>
+				<ul>
+					<li>每个函数都有 prototype 属性，指向它的原型对象。在使用构造函数创建的对象，有 __proto__ 属性，指向它的原型对象。在原型对象中有 constrctor 属性，指向构造函数。</li>
+					<li>在访问对象属性或者方法时，会先在创建的对象本身去找，如果没有找到的话，就会通过对象中国 __proto__ 属性，访问在它的原型对象上去寻找。循环向上查找访问。</li>
+					<li>在原型对象中，又包含__proto__属性，可以指向它原型对象的上层原型对象，一直循环找，直到找到Object对象，原型指向为null,为顶层。</li>
+				</ul>
+			</section>
+			<section>
+				<h3>JS原型的作用</h3>
+				<ul>
+					<li>可以把公共的属性和方法，加到原型对象中，新创建对象时，可以节省内存空间。</li>
+					<li>后续的继承，基于原型，形成原型链去实现。</li>
+				</ul>
+			</section>
+		</main>
+		<script type="text/javascript">
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viweport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<title>对象和类</title>
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			html,body{
+				width:100%;
+				height:100%;
+			}
+			html{
+				font-size:20px;
+			}
+			main,section{
+				display:block;
+			}
+			main{
+				width:30rem;
+				height:auto;
+				padding:1rem;
+				margin:2rem auto 0;
+				box-shadow:0 0 0.5rem 0.5rem #666;
+				border-radius:1rem;
+				font-size:0.7rem;
+				font-family:微软雅黑;
+			}
+			h3{
+				width:100%;
+				height:2rem;
+				text-align:center;
+				line-height:2rem;
+				background-color:black;
+				color:white;
+				margin:0.5rem 0;
+			}
+			ul{
+				list-style-position:inside;
+				padding:1rem;
+			}
+			ul>li{
+				margin:0.5rem 0;
+			}
+		</style>
+		<style>
+			@media (max-width:450px){
+				main{
+					width:auto;
+					height:auto;
+					padding:0;
+					margin:0;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h3> JS 对象的种类 </h3>
+				<ul>
+					<li>JS内置的对象（如Number）</li>
+					<li>宿主环境对象（如window）</li>
+					<li>自己创建的对象</li>
+				</ul>
+			</section>
+			<section>
+				<h3> JS 对象的创建 </h3>
+				<ul>
+					<li>对象字面量形式（属性，方法，get set型属性）</li>
+					<li>成员访问：两种访问方式（. []）。访问对象中没有的属性时，会返回undefined。级联访问（对象里面嵌套对象）</li>
+					<li>Object 函数创建，Object.defineProperty定义与修改属性。Object.defineProperties定义和修改多个属性。还可以用o.xxx='xxx'或者o['xxx']='xxx'去新增属性</li>
+					<li>对象工厂方式（构造函数），创建对象</li>
+				</ul>
+			</section>
+			<section>
+				<h3> JS 对象的基本操作 </h3>
+				<ul>
+					<li>成员的遍历: for(el in o),反射性遍历，无序。可以使用Object.keys(o)辅助排序，进行有序操作。</li>
+					<li>检查对象是否有某个值: 'xxx' in o 或者 o.hasOwnProperty('xxx')</li>
+					<li>成员的删除:delete o.'xxx' ,有些属性是不能删除的</li>
+				</ul>
+			</section>
+			<section>
+				<h3> JS 对象成员特性 </h3>
+				<ul>
+					<li>writable:规定是否可改写</li>
+					<li>enuerable:规定是否可枚举（决定遍历时是否出现）</li>
+					<li>configurable:规定是否可配置</li>
+					<li>通过 Object.getOwnPropertyDescriptor(o,'xxx') 得到自己属性的描述器</li>
+				</ul>
+			</section>
+			<section>
+				<h3> constructor 构造器 </h3>
+				<li>类型判断：typeof 和 instanceof</li>
+			</section>
+		</main>
+	</body>
+</html>
