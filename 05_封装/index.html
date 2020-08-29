@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<title>封装</title>
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			html,body{
+				width:100%;
+				height:100%;
+			}
+			html{
+				font-size:20px;
+			}
+			main,section{
+				display:block;
+			}
+			main{
+				width:30rem;
+				height:auto;
+				margin:2rem auto 0;
+				padding:1rem;
+				border-radius:1rem;
+				box-shadow:0 0 0.5rem 0.5rem #666;
+				font-size:0.7rem;
+				font-family:微软雅黑;
+			}
+			h3{
+				width:100%;
+				height:2rem;
+				text-align:center;
+				line-height:2rem;
+				background-color:black;
+				color:white;
+				margin:0.5rem 0;
+			}
+			ul{
+				list-style-position:inside;
+				margin:0.5rem 0;
+			}
+			ul>li{
+				margin:0.5rem 0;
+			}
+		</style>
+		<style>
+			@media (max-width:450px){
+				main{
+					width:auto;
+					height:auto;
+					padding:0;
+					margin:0;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h3>JS面向对象封装</h3>
+				<ul>
+					<li>命名空间的处理</li>
+					<li>成员封装（静态，公有，私有）</li>
+				</ul>
+			</section>
+		</main>
+		<script>
+			function Person(name){
+				// 私有成员
+				var age = 100;
+				function pm(){
+					console.log(this.name);
+				}
+				// 公有成员
+				this.name = name;
+				this.test = function(){
+					console.log('public method');
+					pm()// pm() 调用时，this 指向 windows
+					pm.call(this) // .call() 改变 this 指向问题
+					// pm.call(person1)
+				}
+			}
+			
+			var person1 = new Person('wuhao');
+			person1.test();
+		</script>
+	</body>
+</html>
