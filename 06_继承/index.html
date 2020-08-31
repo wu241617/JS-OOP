@@ -62,7 +62,7 @@
 			<section>
 				<h3>JS面向对象——继承</h3>
 				<ul>
-					<li>完全赋值，实现继承</li>
+					<li>完全赋值，实现继承 (对象字面量形式) </li>
 					<li>存在的问题，如果是浅拷贝的话，父类中，要实现深拷贝，才能达到目的。（采取递归的方式）</li>
 				</ul>
 			</section>
@@ -80,14 +80,30 @@
 				language: 'javascript'
 			}
 			
-			function extend(p, c){ // 继承函数
-				c = c || {};
+			function extend(p, c){ // 浅拷贝不完全继承函数
+				var c = c || {};
 				for(var prop in p){
 					c[prop] = p[prop];
 				}
 			}
 			
 			extend(person, programer); // 调用封装好的继承函数
+			console.log(programer.name);
+			console.log(programer.age);
+			
+			function extendDeeply(p, c){ // 深拷贝完全继承函数
+				var c = c || {};
+				for(var prop in p){
+					if(typeof p[prop] === "object"){
+						c[prop] = (p[prop].constructor === Array) ? [] : {};
+						extendDeeply(p[prop],c[prop]);
+					}else{
+						c[prop] = p[prop];
+					}
+				}
+			}
+			
+			extendDeeply(person, programer); // 调用封装好的继承函数
 			console.log(programer.name);
 			console.log(programer.age);
 		</script>

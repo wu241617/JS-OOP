@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<title>JS继承-2</title>
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			html,body{
+				width:100%;
+				height:100%;
+			}
+			html{
+				font-size:20px;
+			}
+			main,section{
+				display:block;
+			}
+			main{
+				width:30rem;
+				height:auto;
+				margin:2rem auto 0;
+				padding:1rem;
+				border-radius:1rem;
+				box-shadow:0 0 0.5rem 0.5rem #666;
+				font-size:0.7rem;
+				font-family:微软雅黑;
+			}
+			h3{
+				width:100%;
+				height:2rem;
+				text-align:center;
+				line-height:2rem;
+				background-color:black;
+				color:white;
+				margin:0.5rem 0;
+			}
+			ul{
+				list-style-position:inside;
+				padding:1rem;
+			}
+			ul>li{
+				margin:0.5rem;
+			}
+		</style>
+		<style>
+			@media (max-width:450px){
+				main{
+					width:auto;
+					height:auto;
+					padding:0;
+					margin:0;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h3>JS构造函数生成的类，实现继承</h3>
+				<ul>
+					<li></li>
+				</ul>
+			</section>
+		</main>
+		
+		<script>
+			function Parent(){ // 父类
+				this.name = 'wuhao';
+				this.address = {
+					home: 'home',
+					age: 23
+				}
+			}
+			
+			function Child(){ // 子类
+				Parent.call(this); // 此处 this 指向 Child,在改变 this 指向的同时，将对应的属性值和方法全部赋值。
+				this.language = 'java';
+			}
+			
+			var c = new Child();
+			console.log(c.name);
+			console.log(c.address.age);
+		</script>
+	</body>
+</html>
