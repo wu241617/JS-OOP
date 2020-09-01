@@ -60,11 +60,25 @@
 	<body>
 		<main>
 			<section>
-				<h3></h3>
+				<h3>JS通过原型来实现继承</h3>
 				<ul>
-					<li></li>
+					<li>利用Object.create()方法，实现继承。IE6等不支持。</li>
 				</ul>
 			</section>
 		</main>
+		<script>
+			var p = {name:'c'};
+			function myCreate(p){
+				function F(){}; 
+				F.prototype = p;
+				var ins = new F();
+				return ins;
+			}
+			var o = myCreate(p);
+			console.log(o.name);
+			
+			var o1 = Object.create(p);
+			console.log(o1.name);
+		</script>
 	</body>
 </html>
