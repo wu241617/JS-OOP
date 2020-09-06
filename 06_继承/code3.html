@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<title>JS继承-4类方面继承的实现</title>
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			html,body{
+				width:100%;
+				height:100%;
+			}
+			html{
+				font-size:20px;
+			}
+			main,section{
+				display:block;
+			}
+			main{
+				width:30rem;
+				height:auto;
+				margin:2rem auto 0;
+				padding:1rem;
+				border-radius:1rem;
+				box-shadow:0 0 0.5rem 0.5rem #666;
+				font-family:微软雅黑;
+				font-size:0.7rem;
+			}
+			h3{
+				width:100%;
+				height:2rem;
+				text-align:center;
+				line-height:2rem;
+				background-color:black;
+				color:white;
+				margin:0/5rem 0;
+			}
+			ul{
+				list-style-position:inside;
+				padding:1rem;
+			}
+			ul>li{
+				margin:0.5rem 0;
+			}
+		</style>
+		<style>
+			@media (max-width:450px){
+				main{
+					width:auto;
+					height:auto;
+					padding:0;
+					margin:0;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h3>JS继承-4类方面继承的实现</h3>
+				<ul>
+					<li>创建父类</li>
+					<li>创建子类</li>
+					<li>建立关系</li>
+				</ul>
+			</section>
+		</main>
+		
+		<script>
+			(function(){
+				// 创建父类
+				function P(){
+					
+				}
+				// 创建子类
+				function C(){
+					
+				}
+				// 建立关系
+				// 1,inherit (有问题，子类暴漏给父类)
+				C.prototype = P.prototype;
+				// 2,父类实例作为子类的原型 (存在问题，new P（）新建对象，浪费内存。这里只是做原型关系的桥接)
+				C.prototype = new P();
+				// 3,中间只是存在空函数
+				// function F(){};
+				// F.prototype = P.prototype;
+				// C.prototype = new F();
+				C.prototype = Object.create(P.prototype);
+				var c1 = new C();
+			})()
+		</script>
+	</body>
+</html>
